@@ -1,22 +1,20 @@
 ---
+import BlogTagsLink from '../../../components/BlogTagsLink.astro'
+import NoContents from '../../../components/NoContents.astro'
+import Pagination from '../../../components/Pagination.astro'
+import PostDate from '../../../components/PostDate.astro'
+import PostExcerpt from '../../../components/PostExcerpt.astro'
+import PostFeaturedImage from '../../../components/PostFeaturedImage.astro'
+import PostTags from '../../../components/PostTags.astro'
+import PostTitle from '../../../components/PostTitle.astro'
+import ReadMoreLink from '../../../components/ReadMoreLink.astro'
+import Layout from '../../../layouts/Layout.astro'
 import {
-  getPostsByPage,
-  getRankedPosts,
   getAllTags,
   getNumberOfPages,
   getPostsByPage,
+  getRankedPosts,
 } from '../../../lib/notion/client.ts'
-import Layout from '../../../layouts/Layout.astro'
-import NoContents from '../../../components/NoContents.astro'
-import PostDate from '../../../components/PostDate.astro'
-import PostTags from '../../../components/PostTags.astro'
-import PostTitle from '../../../components/PostTitle.astro'
-import PostFeaturedImage from '../../../components/PostFeaturedImage.astro'
-import PostExcerpt from '../../../components/PostExcerpt.astro'
-import ReadMoreLink from '../../../components/ReadMoreLink.astro'
-import Pagination from '../../../components/Pagination.astro'
-import BlogPostsLink from '../../../components/BlogPostsLink.astro'
-import BlogTagsLink from '../../../components/BlogTagsLink.astro'
 import styles from '../../../styles/blog.module.css'
 
 export async function getStaticPaths() {
@@ -41,9 +39,7 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 
 <Layout title={`Posts ${page}/${numberOfPages}`} path={`/posts/page/${page}`}>
   <div slot="main" class={styles.main}>
-    <header>
-      <div class="page-container">{page}/{numberOfPages}</div>
-    </header>
+    <header class="page-header"></header>
 
     {
       posts.length === 0 ? (
@@ -77,6 +73,10 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 </Layout>
 
 <style>
+  .page-header {
+    border-top: 1px solid #ccc; /* 横線のスタイル */
+    margin: 20px 0; /* 上下の余白 */
+  }
   .page-container {
     margin: 0;
     line-height: 1.3;
