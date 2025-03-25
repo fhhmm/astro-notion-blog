@@ -102,6 +102,8 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
   ogImage={ogImage}
 >
   <div slot="main" class={styles.main}>
+    <header class="page-header"></header>
+
     <div class={styles.post}>
       <PostDate post={post} />
       <PostTags post={post} />
@@ -132,6 +134,10 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
 </Layout>
 
 <style>
+  .page-header {
+    border-top: 1px dashed #888;
+    margin: 20px 0;
+  }
   .featured-image-center {
     display: flex;
     justify-content: center;
