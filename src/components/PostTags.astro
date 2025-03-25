@@ -1,6 +1,6 @@
 ---
-import type { Post, SelectProperty } from '../lib/interfaces.ts'
 import { getTagLink } from '../lib/blog-helpers.ts'
+import type { Post, SelectProperty } from '../lib/interfaces.ts'
 import '../styles/notion-color.css'
 
 export interface Props {
@@ -31,13 +31,11 @@ const { post, enableLink = true } = Astro.props
 <style>
   .post-tags {
     font-size: 0.9rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    text-align: center;
   }
   .post-tags a,
   .post-tags span {
-    display: flex;
+    display: inline-block;
     align-items: center;
     flex-shrink: 1;
     min-width: 0;
