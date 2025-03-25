@@ -7,7 +7,6 @@ import PostExcerpt from '../components/PostExcerpt.astro'
 import PostFeaturedImage from '../components/PostFeaturedImage.astro'
 import PostTags from '../components/PostTags.astro'
 import PostTitle from '../components/PostTitle.astro'
-import ReadMoreLink from '../components/ReadMoreLink.astro'
 import Layout from '../layouts/Layout.astro'
 import {
   getAllTags,
@@ -39,7 +38,6 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
             <PostTitle post={post} />
             <PostFeaturedImage post={post} />
             <PostExcerpt post={post} />
-            <ReadMoreLink post={post} />
           </div>
         ))
       )
@@ -59,5 +57,9 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 <style>
   [class^='_post'] {
     text-align: center;
+  }
+
+  [class^='_post']:not(:last-child) {
+    margin-bottom: 4rem;
   }
 </style>
