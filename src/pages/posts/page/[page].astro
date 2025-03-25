@@ -38,8 +38,6 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 
 <Layout title={`Posts ${page}/${numberOfPages}`} path={`/posts/page/${page}`}>
   <div slot="main" class={styles.main}>
-    <header class="page-header"></header>
-
     {
       posts.length === 0 ? (
         <NoContents contents={posts} />
@@ -71,10 +69,6 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 </Layout>
 
 <style>
-  .page-header {
-    border-top: 1px dashed #888;
-    margin: 20px 0;
-  }
   .page-container {
     margin: 0;
     line-height: 1.3;
