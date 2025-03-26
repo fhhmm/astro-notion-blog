@@ -116,7 +116,7 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
 
   <div slot="aside" class="aside">
     <BlogPostsLink
-      heading="Posts in the same category"
+      heading="Same category"
       posts={postsHavingSameTag.filter(
         (p: interfaces.Post) => p.Slug !== post.Slug
       )}
@@ -129,7 +129,7 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
 
 <style>
   .page-header {
-    border-top: 1px dashed #888;
+    border-top: 1px solid #ccc;
     margin: 20px 0;
   }
 </style>
