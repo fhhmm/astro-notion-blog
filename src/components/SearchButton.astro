@@ -2,14 +2,36 @@
 import { Icon } from 'astro-icon'
 ---
 
-<button class="search-button open-search-modal" type="button"><Icon name="octicon:search-24" /><span>Search</span></button>
+<h2>Search</h2>
+<button class="search-button open-search-modal" type="button"
+  ><Icon name="octicon:search-24" /><span>Search</span></button
+>
 
 <style>
+  h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-left: 0.4rem;
+    color: #777;
+    font-size: 0.95rem;
+  }
+
+  h2::before,
+  h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 0.5rem;
+  }
+
   .search-button {
     display: flex;
     width: 100%;
     background-color: transparent;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
     border: none;
     border-radius: var(--radius);
     padding: 0.4rem 0.4rem;
@@ -26,7 +48,7 @@ import { Icon } from 'astro-icon'
     height: 20px;
     margin-right: 0.2rem;
   }
-  [astro-icon="octicon:search-24"] {
+  [astro-icon='octicon:search-24'] {
     color: var(--fg);
   }
 </style>

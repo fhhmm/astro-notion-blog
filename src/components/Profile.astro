@@ -1,0 +1,55 @@
+---
+export interface Props {
+    imageUrl: string
+    description: string
+}
+
+const { imageUrl, description } = Astro.props
+---
+
+<div class="profile">
+    <h2>Profile</h2>
+    <img src={imageUrl} alt="Profile Image" class="profile-image" />
+    <p class="profile-description" set:html={description} />
+</div>
+
+<style>
+    .profile {
+        text-align: center; /* コンポーネント全体を中央揃え */
+        margin-bottom: 2rem;
+    }
+
+    .profile h2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding-left: 0.4rem;
+        color: #777;
+        font-size: 0.95rem;
+    }
+
+    .profile h2::before,
+    .profile h2::after {
+        content: ''; /* 横棒を表示 */
+        flex: 1; /* 横棒を伸ばす */
+        height: 1px;
+        background-color: #ccc;
+        margin: 0 0.5rem; /* 横棒と文字の間隔 */
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%; /* 円形にする */
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+
+    .profile-description {
+        text-align: left; /* 文章を左揃え */
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: #333;
+    }
+</style>

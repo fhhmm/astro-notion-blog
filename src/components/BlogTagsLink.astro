@@ -1,8 +1,8 @@
 ---
-import type { SelectProperty } from '../lib/interfaces.ts'
 import { getTagLink } from '../lib/blog-helpers.ts'
-import NoContents from './NoContents.astro'
+import type { SelectProperty } from '../lib/interfaces.ts'
 import '../styles/notion-color.css'
+import NoContents from './NoContents.astro'
 
 export interface Props {
   heading: string
@@ -35,10 +35,21 @@ const { heading, tags } = Astro.props
   .blog-tags-link {
   }
   .blog-tags-link h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     padding-left: 0.4rem;
     color: #777;
     font-size: 0.95rem;
+  }
+  .blog-tags-link h2::before,
+  .blog-tags-link h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 0.5rem;
   }
   .blog-tags-link ul {
     list-style-type: none;
