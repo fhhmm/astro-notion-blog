@@ -1,23 +1,21 @@
 ---
-import type { SelectProperty } from '../../../lib/interfaces.ts'
-import { NUMBER_OF_POSTS_PER_PAGE } from '../../../server-constants.ts'
-import {
-  getPostsByTag,
-  getRankedPosts,
-  getAllTags,
-  getNumberOfPagesByTag,
-} from '../../../lib/notion/client.ts'
-import Layout from '../../../layouts/Layout.astro'
+import BlogTagsLink from '../../../components/BlogTagsLink.astro'
 import NoContents from '../../../components/NoContents.astro'
+import Pagination from '../../../components/Pagination.astro'
 import PostDate from '../../../components/PostDate.astro'
+import PostExcerpt from '../../../components/PostExcerpt.astro'
+import PostFeaturedImage from '../../../components/PostFeaturedImage.astro'
 import PostTags from '../../../components/PostTags.astro'
 import PostTitle from '../../../components/PostTitle.astro'
-import PostFeaturedImage from '../../../components/PostFeaturedImage.astro'
-import PostExcerpt from '../../../components/PostExcerpt.astro'
-import ReadMoreLink from '../../../components/ReadMoreLink.astro'
-import Pagination from '../../../components/Pagination.astro'
-import BlogPostsLink from '../../../components/BlogPostsLink.astro'
-import BlogTagsLink from '../../../components/BlogTagsLink.astro'
+import Layout from '../../../layouts/Layout.astro'
+import type { SelectProperty } from '../../../lib/interfaces.ts'
+import {
+  getAllTags,
+  getNumberOfPagesByTag,
+  getPostsByTag,
+  getRankedPosts,
+} from '../../../lib/notion/client.ts'
+import { NUMBER_OF_POSTS_PER_PAGE } from '../../../server-constants.ts'
 import styles from '../../../styles/blog.module.css'
 import '../../../styles/notion-color.css'
 
@@ -57,7 +55,6 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
             <PostTitle post={post} />
             <PostFeaturedImage post={post} />
             <PostExcerpt post={post} />
-            <ReadMoreLink post={post} />
           </div>
         ))
       )
@@ -90,5 +87,12 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
     border-radius: 4px;
     padding: 3px 9px;
     background: var(--tag-bg-light-gray);
+  }
+  [class^='_post'] {
+    text-align: center;
+  }
+
+  [class^='_post']:not(:last-child) {
+    margin-bottom: 4rem;
   }
 </style>
