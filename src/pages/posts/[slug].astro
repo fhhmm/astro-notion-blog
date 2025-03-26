@@ -26,8 +26,6 @@ import {
 } from '../../lib/notion/client.ts'
 import styles from '../../styles/blog.module.css'
 
-import PostFeaturedImage from '../../components/PostFeaturedImage.astro'
-
 export async function getStaticPaths() {
   const posts = await getAllPosts()
   return posts.map((post: interfaces.Post) => ({ params: { slug: post.Slug } }))
@@ -108,9 +106,6 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
       <PostDate post={post} />
       <PostTags post={post} />
       <PostTitle post={post} enableLink={false} />
-      <div class="featured-image-center">
-        <PostFeaturedImage post={post} />
-      </div>
       <PostBody blocks={blocks} />
       <PostTags post={post} />
 
@@ -137,10 +132,5 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
   .page-header {
     border-top: 1px dashed #888;
     margin: 20px 0;
-  }
-  .featured-image-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 </style>
