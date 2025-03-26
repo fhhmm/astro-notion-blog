@@ -6,12 +6,13 @@ import '../styles/notion-color.css'
 export interface Props {
   post: Post
   enableLink: boolean
+  class?: string
 }
 
-const { post, enableLink = true } = Astro.props
+const { post, enableLink = true, class: className } = Astro.props
 ---
 
-<div class="post-tags">
+<div class={`post-tags" ${className || ''}`}>
   {
     post.Tags &&
       post.Tags.length > 0 &&
@@ -31,11 +32,17 @@ const { post, enableLink = true } = Astro.props
 <style>
   .post-tags {
     font-size: 0.9rem;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .post-tags.center {
+    text-align: center; /* 中央揃え */
+    justify-content: center; /* タグを中央に配置 */
   }
   .post-tags a,
   .post-tags span {
-    display: inline-block;
+    display: flex;
     align-items: center;
     flex-shrink: 1;
     min-width: 0;
