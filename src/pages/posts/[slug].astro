@@ -100,8 +100,6 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
   ogImage={ogImage}
 >
   <div slot="main" class={styles.main}>
-    <header class="page-header"></header>
-
     <div class={styles.post}>
       <PostDate post={post} />
       <PostTags post={post} />
@@ -126,10 +124,3 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
     <BlogTagsLink heading="Categories" tags={tags} />
   </div>
 </Layout>
-
-<style>
-  .page-header {
-    border-top: 1px solid #bbb;
-    margin: 20px 0;
-  }
-</style>
